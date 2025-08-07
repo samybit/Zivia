@@ -26,7 +26,6 @@ class QuizInterface:
 
         # Buttons for true and false
         true_image = PhotoImage(file="images/true.png")
-        true_image = true_image.subsample(true_image.width() // 110, true_image.height() // 110) # resizes the image to fit the button
         self.true_button = Button(
             image=true_image, 
             highlightthickness=0, 
@@ -39,7 +38,6 @@ class QuizInterface:
         self.true_button.grid(row=2, column=0)
 
         false_image = PhotoImage(file="images/false.png")
-        false_image = false_image.subsample(false_image.width() // 110, false_image.height() // 110)
         self.false_button = Button(
             image=false_image, 
             highlightthickness=0, 
