@@ -1,4 +1,5 @@
-from tkinter import *
+import os, sys
+from tkinter import * # type: ignore
 from question_model import Question
 from quiz_brain import QuizBrain
 
@@ -6,6 +7,18 @@ THEME_COLOR = "#B6BAB3"
 QUESTION_COLOR = "#121015"
 SCORE_COLOR = "#D71134"
 CANVAS_COLOR = "#A8B082"
+
+
+def resource_path(relative_path):
+    """ Get the absolute path to a resource, works for dev and for PyInstaller """
+    try:
+        # When running as .exe
+        base_path = sys._MEIPASS # type: ignore
+    except AttributeError:
+        # When running as .py
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 class QuizInterface:
     def __init__(self, quiz_brain: QuizBrain):
@@ -43,7 +56,7 @@ class QuizInterface:
         self.canvas.grid(row=1, column=0, columnspan=2, pady=50)
 
         # Buttons for true and false
-        true_image = PhotoImage(file="images/true.png")
+        true_image = PhotoImage(file=resource_path("images/true.png"))
         self.true_button = Button(
             image=true_image, 
             highlightthickness=0, 
@@ -55,7 +68,7 @@ class QuizInterface:
             )
         self.true_button.grid(row=2, column=0)
 
-        false_image = PhotoImage(file="images/false.png")
+        false_image = PhotoImage(file=resource_path("images/false.png"))
         self.false_button = Button(
             image=false_image, 
             highlightthickness=0, 
