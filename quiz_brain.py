@@ -43,17 +43,14 @@ class QuizBrain:
         Returns:
             None
         """
-        #check to make sure self.current_question is not None before accessing its answer attribute.
+        # check to make sure self.current_question is not None before accessing its answer attribute.
         if self.current_question is None:   
             print("No current question set.")
-            return
+            return 
         
         correct_answer = self.current_question.answer
         if user_answer.lower() == correct_answer.lower():
             self.score += 1
-            print("You got it right!")
+            return True
         else:
-            print("That's wrong.")
-
-        print(f"Your current score is: {self.score}/{self.question_number}")
-        print("\n")
+            return False

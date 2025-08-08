@@ -5,6 +5,7 @@ import requests
 paramameters = {
     "amount": "10",
     "type": "boolean",
+    "category": "18",
 }
 
 connection = requests.get("https://opentdb.com/api.php", params=paramameters)

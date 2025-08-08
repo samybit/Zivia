@@ -37,7 +37,7 @@ class QuizInterface:
             relief="flat",
             bg=THEME_COLOR,
             activebackground=THEME_COLOR,
-            command=None)
+            command=self.true_pressed)
         self.true_button.image = true_image  # prevents python garbage collection
         self.true_button.grid(row=2, column=0)
 
@@ -49,7 +49,7 @@ class QuizInterface:
             relief="flat",
             bg=THEME_COLOR,
             activebackground=THEME_COLOR,
-            command=None)
+            command=self.false_pressed)
         self.false_button.image = false_image  # prevents python garbage collection
         self.false_button.grid(row=2, column=1)
 
@@ -58,8 +58,27 @@ class QuizInterface:
         self.window.mainloop()
 
     def get_next_question(self):
-        """
-        Fetches the next question from the quizbrain and updates the UI.
-        """
-        q_text = self.quiz.next_question()
-        self.canvas.itemconfig(self.question_text, text=q_text)
+        self.canvas.config(bg="#FFFFFF")
+
+        if self.quiz.still_has_questions():
+            self.score_label.config(text=f"Score: {self.quiz.score}|{self.quiz.question_number}")
+            q_text = self.quiz.next_question()
+            self.canvas.itemconfig(self.question_text, text=q_text)
+        else:
+            self.canvas.itemconfig(self.question_text, text="Quiz Ended.")
+            self.true_button.config(state="disabled")
+            self.false_button.config(state="disabled")
+
+    def true_pressed(self):
+        self.give_feedback(self.quiz.check_answer("True"))
+
+    def false_pressed(self):
+        self.give_feedback(self.quiz.check_answer("False"))
+        
+
+    def give_feedback(self, is_right):
+        if is_right:
+            self.canvas.config(bg="#00FF00")
+        else:
+            self.canvas.config(bg="#FF0000")
+        self.window.after(1000, self.get_next_question)
