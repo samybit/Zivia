@@ -1,16 +1,19 @@
 from tkinter import *
+from quiz_brain import QuizBrain
 
-THEME_COLOR = "#375362"
+THEME_COLOR = "#000000"
 
 class QuizInterface:
-    def __init__(self):
+    def __init__(self, quiz_brain: QuizBrain):
+        self.quiz = quiz_brain
+
         # Window setup
         self.window = Tk()
         self.window.title("Quizzler")
         self.window.config(bg=THEME_COLOR, padx=20, pady=20)
 
         # Score label
-        self.score_label = Label(text="Score: 0", fg="white", bg=THEME_COLOR)
+        self.score_label = Label(text="Score: 0", fg="#FFD54F", bg=THEME_COLOR, font=("Luckiest Guy", 20, "bold"))
         self.score_label.grid(row=0, column=1)
 
         # Canvas to display the question
@@ -18,6 +21,7 @@ class QuizInterface:
         self.question_text = self.canvas.create_text(
             150,
             125,
+            width=280,
             text="Question goes here",
             fill=THEME_COLOR,
             font=("Arial", 20, "italic"),
@@ -49,5 +53,13 @@ class QuizInterface:
         self.false_button.image = false_image  # prevents python garbage collection
         self.false_button.grid(row=2, column=1)
 
+        self.get_next_question()
 
         self.window.mainloop()
+
+    def get_next_question(self):
+        """
+        Fetches the next question from the quizbrain and updates the UI.
+        """
+        q_text = self.quiz.next_question()
+        self.canvas.itemconfig(self.question_text, text=q_text)
