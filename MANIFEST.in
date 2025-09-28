@@ -1,1 +1,1 @@
-recursive-include zivia/images *
+recursive-include src/zivia/images *
