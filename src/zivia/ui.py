@@ -1,22 +1,12 @@
-import os
-import sys
 import tkinter as tk
-from .question_model import Question
-from .quiz_brain import QuizBrain
+from quiz_brain import QuizBrain
+from pathlib import Path
 
 THEME_COLOR = "#B6BAB3"
 QUESTION_COLOR = "#121015"
 SCORE_COLOR = "#D71134"
 CANVAS_COLOR = "#A8B082"
 
-def resource_path(filename: str):
-    """Return path to a resource file for dev or PyInstaller."""
-    if getattr(sys, "frozen", False):
-        # PyInstaller executable
-        return os.path.join(sys._MEIPASS, filename)
-    else:
-        # Development
-        return os.path.join(os.path.dirname(__file__), "..", "images", filename)
 
 class QuizInterface:
     def __init__(self, quiz_brain: QuizBrain):
@@ -40,7 +30,7 @@ class QuizInterface:
         self.canvas = tk.Canvas(
             width=350,
             height=250,
-            bg="green",
+            bg="white",
             highlightthickness=4,
             highlightbackground=SCORE_COLOR
         )
@@ -54,8 +44,11 @@ class QuizInterface:
         )
         self.canvas.grid(row=1, column=0, columnspan=2, pady=50)
 
+        TRUE_IMAGE_PATH = Path(__file__).parent / "images/true.png"
+        FALSE_IMAGE_PATH = Path(__file__).parent / "images/false.png"
+
         # Buttons for true and false
-        self.true_image = tk.PhotoImage(file=resource_path("true.png"))
+        self.true_image = tk.PhotoImage(file=TRUE_IMAGE_PATH)
         self.true_button = tk.Button(
             image=self.true_image,
             highlightthickness=0,
@@ -67,7 +60,7 @@ class QuizInterface:
         )
         self.true_button.grid(row=2, column=0)
 
-        self.false_image = tk.PhotoImage(file=resource_path("false.png"))
+        self.false_image = tk.PhotoImage(file=FALSE_IMAGE_PATH)
         self.false_button = tk.Button(
             image=self.false_image,
             highlightthickness=0,

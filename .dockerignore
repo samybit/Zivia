@@ -1,0 +1,34 @@
+Docker ---
+Ignore docker files
+Dockerfile
+.dockerignore
+
+Git ---
+Ignore git files
+.git
+.gitignore
+
+Python ---
+Ignore virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+Ignore python cache and compiled files
+pycache/
+*.pyc
+*.pyo
+*.pyd
+
+IDEs and Editors ---
+Ignore IDE and editor specific files
+.vscode/
+.idea/
+*.swp
+
+Build artifacts ---
+Ignore build and distribution artifacts
+build/
+dist/
+*.egg-info/
