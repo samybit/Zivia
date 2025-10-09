@@ -5,7 +5,7 @@ from ui import QuizInterface
 
 def main():
     # Create a bank of questions
-    question_bank = []
+    question_bank: list[Question] = []
     for question in question_data:
         question_text = question["question"]
         question_answer = question["correct_answer"]
@@ -14,7 +14,7 @@ def main():
 
     # Create a QuizBrain object and a QuizInterface object
     quiz = QuizBrain(question_bank)
-    quiz_ui = QuizInterface(quiz)
+    quiz_ui = QuizInterface(quiz) # type: ignore
 
     # End message and display the final score
     print("You've completed the quiz")

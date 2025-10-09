@@ -1,8 +1,9 @@
 import html
+from question_model import Question
 
 class QuizBrain:
 
-    def __init__(self, q_list):
+    def __init__(self, q_list: list[Question]):
         """
         Constructor for QuizBrain object.
 
@@ -33,7 +34,7 @@ class QuizBrain:
 
         return f"Q.{self.question_number}: {q_text}"
 
-    def check_answer(self, user_answer):
+    def check_answer(self, user_answer: str) -> bool:
         """
         Checks if the user's answer is correct.
         
@@ -46,7 +47,7 @@ class QuizBrain:
         # check to make sure self.current_question is not None before accessing its answer attribute.
         if self.current_question is None:   
             print("No current question set.")
-            return 
+            return False
         
         correct_answer = self.current_question.answer
         if user_answer.lower() == correct_answer.lower():

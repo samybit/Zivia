@@ -87,13 +87,13 @@ class QuizInterface:
             self.true_button.config(state="disabled")
             self.false_button.config(state="disabled")
 
-    def true_pressed(self):
+    def true_pressed(self) -> None:
         self.give_feedback(self.quiz.check_answer("True"))
 
-    def false_pressed(self):
+    def false_pressed(self) -> None:
         self.give_feedback(self.quiz.check_answer("False"))
 
-    def give_feedback(self, is_right):
+    def give_feedback(self, is_right: bool) -> None:
         if is_right:
             self.canvas.config(bg="#00FF00")
         else:
