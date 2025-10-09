@@ -28,7 +28,7 @@ class QuizInterface:
 
         # Canvas to display the question
         self.canvas = tk.Canvas(
-            width=350,
+            width=330,
             height=250,
             bg="white",
             highlightthickness=4,
@@ -92,14 +92,15 @@ class QuizInterface:
             self.canvas.itemconfig(
                 self.question_text,
                 text=q_text,
-                font=("Arial", font_size, "italic")
+                font=("Arial", font_size, "italic"),
+                width=300,
             )
 
         else:
             self.canvas.itemconfig(
                 self.question_text,
                 text="Quiz Ended.",
-                font=("Arial", 20, "bold")
+                font=("Arial", 20, "bold"),
             )
             self.true_button.config(state="disabled")
             self.false_button.config(state="disabled")
