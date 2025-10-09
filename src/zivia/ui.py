@@ -83,10 +83,10 @@ class QuizInterface:
             q_text = self.quiz.next_question()
             
             # Dynamically adjust font size based on question length
-            if len(q_text) > 120:
+            if len(q_text) > 110:
                 font_size = 16
             else:
-                font_size = 19
+                font_size = 18
             
             # Update both the text and the font in the same call
             self.canvas.itemconfig(
