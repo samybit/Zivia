@@ -86,13 +86,13 @@ class QuizInterface:
             if len(q_text) > 120:
                 font_size = 16
             else:
-                font_size = 20
+                font_size = 19
             
             # Update both the text and the font in the same call
             self.canvas.itemconfig(
                 self.question_text,
                 text=q_text,
-                font=("Arial", font_size, "italic"),
+                font=("Consolas", font_size, "bold"),
                 width=300,
             )
 
@@ -100,7 +100,7 @@ class QuizInterface:
             self.canvas.itemconfig(
                 self.question_text,
                 text="Quiz Ended.",
-                font=("Arial", 20, "bold"),
+                font=("Montserrat", 22, "bold"),
             )
             self.true_button.config(state="disabled")
             self.false_button.config(state="disabled")
@@ -116,4 +116,4 @@ class QuizInterface:
             self.canvas.config(bg="#00FF00")
         else:
             self.canvas.config(bg="#FF0000")
-        self.window.after(1000, self.get_next_question)
+        self.window.after(500, self.get_next_question)
