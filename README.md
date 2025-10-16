@@ -8,8 +8,8 @@ Zivia is a simple desktop quiz application built with Python and Tkinter. It fet
 ***
 ## Features ✨
 
-* **Interactive GUI**: Clean and simple user interface built with Tkinter.
-* **Live Trivia Questions**: Fetches fresh questions directly from the Open Trivia DB API.
+* **Interactive GUI**: Simple user interface built with Tkinter.
+* **Live Trivia Questions**: Fetches questions directly from the Open Trivia DB API.
 * **Instant Feedback**: The screen turns green for correct answers and red for incorrect ones.
 * **Score Tracking**: Keeps a running total of your score.
 * **Cross-Platform**: Can be run directly on any OS with Python or as a Docker container.
