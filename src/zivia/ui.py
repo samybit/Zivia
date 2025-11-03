@@ -1,5 +1,5 @@
 import tkinter as tk
-from quiz_brain import QuizBrain
+from .quiz_brain import QuizBrain
 from pathlib import Path
 
 THEME_COLOR = "#B6BAB3"

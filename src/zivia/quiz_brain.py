@@ -1,5 +1,5 @@
 import html
-from question_model import Question
+from .question_model import Question
 
 class QuizBrain:
 
