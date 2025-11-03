@@ -3,7 +3,11 @@
 Zivia is a simple desktop quiz application built with Python and Tkinter. It fetches true/false questions from the Open Trivia Database API and challenges you to test your knowledge. The application provides instant feedback and keeps track of your score as you play.
 
 ## Screenshot
+
+![demo](assets/screenshot.png)
+<!-- ## Screenshot
 ![Zivia Quiz App Screenshot](https://i.ibb.co/VY2KJwR6/screenshot.png)
+-->
 
 ***
 ## Features ✨
